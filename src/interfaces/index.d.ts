@@ -2,11 +2,13 @@ export interface ICategory {
   id: string;
   title: string;
 }
-export interface IPost {
+export interface IUser {
   id: string;
-  title: string;
-  content: string;
-  status: "published" | "draft" | "rejected";
-  createdAt: string;
-  category: ICategory;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  phoneNumber: string
+
 }

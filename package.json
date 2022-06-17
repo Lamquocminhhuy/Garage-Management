@@ -25,7 +25,7 @@
     "react-mde": "^11.1.0"
   },
   "scripts": {
-    "dev": "craco start",
+    "dev": "craco start ",
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"

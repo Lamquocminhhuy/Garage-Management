@@ -8,8 +8,8 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => (
   <Link to="/">
     {collapsed ? (
       <img
-        src={"/refine-collapsed.svg"}
-        alt="Refine"
+        src={"https://znews-photo.zingcdn.me/w660/Uploaded/spivovxi/2021_06_12/thoi_diem_nguy_hiem_traderviet3.jpg"}
+        alt="Admin"
         style={{
           display: "flex",
           alignItems: "center",
@@ -19,7 +19,7 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => (
       />
     ) : (
       <img
-        src={"/refine.svg"}
+        src={"https://znews-photo.zingcdn.me/w660/Uploaded/spivovxi/2021_06_12/thoi_diem_nguy_hiem_traderviet3.jpg"}
         alt="Refine"
         style={{
           width: "200px",

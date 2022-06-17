@@ -5,14 +5,16 @@ import {
   CanAccess,
   ITreeMenu,
   useRouterContext,
+  useLogout,
 } from "@pankod/refine-core";
 import { AntdLayout, Menu, Grid, Icons, useMenu } from "@pankod/refine-antd";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
-const { UnorderedListOutlined } = Icons;
+const { UnorderedListOutlined, LogoutOutlined } = Icons;
 
 export const Sider: React.FC = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
+  const { mutate: logout } = useLogout();
 
   const { Link } = useRouterContext();
   const Title = useTitle();
@@ -80,6 +82,15 @@ export const Sider: React.FC = () => {
         }}
       >
         {renderTreeView(menuItems, selectedKey)}
+
+        
+        <Menu.Item
+          key="logout"
+          onClick={() => logout()}
+          icon={<LogoutOutlined />}
+        >
+          Logout
+        </Menu.Item>
       </Menu>
     </AntdLayout.Sider>
   );

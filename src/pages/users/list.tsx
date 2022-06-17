@@ -15,10 +15,10 @@ import {
   Select,
   ShowButton,
 } from "@pankod/refine-antd";
-import { IPost, ICategory } from "interfaces";
+import { IUser} from "interfaces";
 
-export const PostList: React.FC<IResourceComponentsProps> = () => {
-  const { tableProps, sorter } = useTable<IPost>({
+export const UserList: React.FC<IResourceComponentsProps> = () => {
+  const { tableProps, sorter } = useTable<IUser>({
     initialSorter: [
       {
         field: "id",
@@ -27,19 +27,19 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
     ],
   });
 
-  const categoryIds =
-    tableProps?.dataSource?.map((item) => item.category.id) ?? [];
-  const { data: categoriesData, isLoading } = useMany<ICategory>({
-    resource: "categories",
-    ids: categoryIds,
-    queryOptions: {
-      enabled: categoryIds.length > 0,
-    },
-  });
+  // const categoryIds =
+  //   tableProps?.dataSource?.map((item) => item.category.id) ?? [];
+  // const { data: categoriesData, isLoading } = useMany<ICategory>({
+  //   resource: "user",
+  //   ids: categoryIds,
+  //   queryOptions: {
+  //     enabled: categoryIds.length > 0,
+  //   },
+  // });
 
-  const { selectProps: categorySelectProps } = useSelect<ICategory>({
-    resource: "categories",
-  });
+  // const { selectProps: categorySelectProps } = useSelect<ICategory>({
+  //   resource: "user",
+  // });
 
   return (
     <List>
@@ -53,30 +53,45 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
           sorter
         />
         <Table.Column
-          dataIndex="title"
-          key="title"
-          title="Title"
+          dataIndex="email"
+          key="email"
+          title="Email"
           render={(value) => <TextField value={value} />}
-          defaultSortOrder={getDefaultSortOrder("title", sorter)}
+          defaultSortOrder={getDefaultSortOrder("email", sorter)}
           sorter
         />
         <Table.Column
-          dataIndex="status"
-          key="status"
-          title="Status"
-          render={(value) => <TagField value={value} />}
-          defaultSortOrder={getDefaultSortOrder("status", sorter)}
+          dataIndex="firstName"
+          key="firstName"
+          title="First Name"
+          render={(value) => <TextField value={value} />}
+          defaultSortOrder={getDefaultSortOrder("firstName", sorter)}
           sorter
         />
         <Table.Column
-          dataIndex="createdAt"
-          key="createdAt"
-          title="Created At"
-          render={(value) => <DateField value={value} format="LLL" />}
-          defaultSortOrder={getDefaultSortOrder("createdAt", sorter)}
+          dataIndex="lastName"
+          key="lastName"
+          title="Last Name"
+          render={(value) => <TextField value={value}/>}
+          defaultSortOrder={getDefaultSortOrder("lastName", sorter)}
           sorter
         />
-        <Table.Column
+      <Table.Column
+          dataIndex="gender"
+          key="gender"
+          title="Gender"
+          render={(value) => <TextField value={value}/>}
+          defaultSortOrder={getDefaultSortOrder("gender", sorter)}
+          sorter
+        /> <Table.Column
+        dataIndex="phoneNumber"
+        key="phoneNumber"
+        title="Phone Number"
+        render={(value) => <TextField value={value}/>}
+        defaultSortOrder={getDefaultSortOrder("phoneNumber", sorter)}
+        sorter
+      />
+        {/* <Table.Column
           dataIndex={["category", "id"]}
           title="Category"
           render={(value) => {
@@ -102,8 +117,8 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
               />
             </FilterDropdown>
           )}
-        />
-        <Table.Column<IPost>
+        /> */}
+        <Table.Column<IUser>
           title="Actions"
           dataIndex="actions"
           render={(_, record) => (

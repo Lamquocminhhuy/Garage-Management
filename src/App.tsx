@@ -1,4 +1,4 @@
-import { Refine } from "@pankod/refine-core";
+import { AuthProvider, Refine } from "@pankod/refine-core";
 import {
   notificationProvider,
   ReadyPage,
@@ -7,7 +7,7 @@ import {
 import "styles/antd.less";
 import routerProvider from "@pankod/refine-react-router-v6";
 import nestjsxCrudDataProvider from "@pankod/refine-nestjsx-crud";
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
+import {  UserCreate, UserList, UserShow, UserEdit } from "pages/users";
 import {
   Title,
   Header,
@@ -16,10 +16,13 @@ import {
   Layout,
   OffLayoutArea,
 } from "components/layout";
+import { Login } from "./pages/login";
+import { authProvider } from "./authProvider";
 
 function App() {
-  const API_URL = "https://api.nestjsx-crud.refine.dev";
+  const API_URL = "http://localhost:3000";
   const dataProvider = nestjsxCrudDataProvider(API_URL);
+
 
   return (
     <Refine
@@ -27,19 +30,23 @@ function App() {
       ReadyPage={ReadyPage}
       catchAll={<ErrorComponent />}
       routerProvider={routerProvider}
+      authProvider={authProvider}
       dataProvider={dataProvider}
+      LoginPage={Login}
       resources={[
         {
-          name: "posts",
-          list: PostList,
-          create: PostCreate,
-          edit: PostEdit,
-          show: PostShow,
+          name: "users",
+          list: UserList,
+          create: UserCreate,
+          edit: UserEdit,
+          show: UserShow,
         },
+     
       ]}
       Title={Title}
       Header={Header}
       Sider={Sider}
+ 
       Footer={Footer}
       Layout={Layout}
       OffLayoutArea={OffLayoutArea}
