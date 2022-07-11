@@ -1,4 +1,4 @@
-import { AuthProvider, Refine } from "@pankod/refine-core";
+import { Refine } from "@pankod/refine-core";
 import {
   notificationProvider,
   ReadyPage,
@@ -7,7 +7,13 @@ import {
 import "styles/antd.less";
 import routerProvider from "@pankod/refine-react-router-v6";
 import nestjsxCrudDataProvider from "@pankod/refine-nestjsx-crud";
-import {  UserCreate, UserList, UserShow, UserEdit } from "pages/users";
+import { UserCreate, UserList, UserShow, UserEdit } from "pages/users";
+import {
+  GarageCreate,
+  GarageEdit,
+  GarageList,
+  GarageShow,
+} from "pages/garages";
 import {
   Title,
   Header,
@@ -22,7 +28,6 @@ import { authProvider } from "./authProvider";
 function App() {
   const API_URL = "http://localhost:3000";
   const dataProvider = nestjsxCrudDataProvider(API_URL);
-
 
   return (
     <Refine
@@ -41,12 +46,17 @@ function App() {
           edit: UserEdit,
           show: UserShow,
         },
-     
+        {
+          name: "garage",
+          create: GarageCreate,
+          list: GarageList,
+          edit: GarageEdit,
+          show: GarageShow,
+        },
       ]}
       Title={Title}
       Header={Header}
       Sider={Sider}
- 
       Footer={Footer}
       Layout={Layout}
       OffLayoutArea={OffLayoutArea}
