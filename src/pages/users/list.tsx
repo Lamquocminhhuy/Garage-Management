@@ -15,14 +15,14 @@ import {
   Select,
   ShowButton,
 } from "@pankod/refine-antd";
-import { IUser} from "interfaces";
+import { IUser } from "interfaces";
 
 export const UserList: React.FC<IResourceComponentsProps> = () => {
   const { tableProps, sorter } = useTable<IUser>({
     initialSorter: [
       {
         field: "id",
-        order: "desc",
+        order: "asc",
       },
     ],
   });
@@ -72,25 +72,26 @@ export const UserList: React.FC<IResourceComponentsProps> = () => {
           dataIndex="lastName"
           key="lastName"
           title="Last Name"
-          render={(value) => <TextField value={value}/>}
+          render={(value) => <TextField value={value} />}
           defaultSortOrder={getDefaultSortOrder("lastName", sorter)}
           sorter
         />
-      <Table.Column
+        <Table.Column
           dataIndex="gender"
           key="gender"
           title="Gender"
-          render={(value) => <TextField value={value}/>}
+          render={(value) => <TextField value={value} />}
           defaultSortOrder={getDefaultSortOrder("gender", sorter)}
           sorter
-        /> <Table.Column
-        dataIndex="phoneNumber"
-        key="phoneNumber"
-        title="Phone Number"
-        render={(value) => <TextField value={value}/>}
-        defaultSortOrder={getDefaultSortOrder("phoneNumber", sorter)}
-        sorter
-      />
+        />{" "}
+        <Table.Column
+          dataIndex="phoneNumber"
+          key="phoneNumber"
+          title="Phone Number"
+          render={(value) => <TextField value={value} />}
+          defaultSortOrder={getDefaultSortOrder("phoneNumber", sorter)}
+          sorter
+        />
         {/* <Table.Column
           dataIndex={["category", "id"]}
           title="Category"
