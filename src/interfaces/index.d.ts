@@ -8,7 +8,11 @@ export interface IUser {
   password: string;
   firstName: string;
   lastName: string;
-  gender: string;
-  phoneNumber: string
+  gender: "male" | "female" | "other";
+  phoneNumber: string;
+}
 
+export interface IGarage {
+  id: string;
+  name: string;
 }
