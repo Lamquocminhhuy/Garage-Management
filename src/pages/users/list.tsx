@@ -28,8 +28,8 @@ export const UserList: React.FC<IResourceComponentsProps> = () => {
   });
 
   // const categoryIds =
-  //   tableProps?.dataSource?.map((item) => item.category.id) ?? [];
-  // const { data: categoriesData, isLoading } = useMany<ICategory>({
+  //   tableProps?.dataSource?.map((item) => item.reservation.id) ?? [];
+  // const { data: categoriesData, isLoading } = useMany<IReservation>({
   //   resource: "user",
   //   ids: categoryIds,
   //   queryOptions: {
@@ -37,7 +37,7 @@ export const UserList: React.FC<IResourceComponentsProps> = () => {
   //   },
   // });
 
-  // const { selectProps: categorySelectProps } = useSelect<ICategory>({
+  // const { selectProps: categorySelectProps } = useSelect<IReservation>({
   //   resource: "user",
   // });
 
@@ -103,7 +103,7 @@ export const UserList: React.FC<IResourceComponentsProps> = () => {
             return (
               <TextField
                 value={
-                  categoriesData?.data.find((item) => item.id === value)?.title
+                  categoriesData?.data.find((item) => item.id === value)?.r_date
                 }
               />
             );

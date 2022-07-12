@@ -1,7 +1,7 @@
 import { IResourceComponentsProps, useOne, useShow } from "@pankod/refine-core";
 import { Show, Typography, Tag, MarkdownField } from "@pankod/refine-antd";
 
-import { IUser, ICategory } from "interfaces";
+import { IUser } from "interfaces";
 
 const { Title, Text } = Typography;
 

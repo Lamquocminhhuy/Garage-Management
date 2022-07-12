@@ -14,7 +14,7 @@ import ReactMde from "react-mde";
 
 import "react-mde/lib/styles/css/react-mde-all.css";
 
-import { IUser, ICategory } from "interfaces";
+import { IUser } from "interfaces";
 
 export const UserCreate: React.FC<IResourceComponentsProps> = () => {
   // const [selectedTab, setSelectedTab] = useState<"write" | "preview">("write");
@@ -50,7 +50,7 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
         >
           <Input.Password />
         </Form.Item>
-        
+
         <Form.Item
           label="First Name"
           name="firstName"
@@ -61,7 +61,6 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
           ]}
         >
           <Input />
-       
         </Form.Item>
 
         <Form.Item
@@ -98,7 +97,6 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
           />
         </Form.Item>
 
-        
         <Form.Item
           label="Phone Number"
           name="phoneNumber"

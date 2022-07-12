@@ -1,6 +1,16 @@
 import React from "react";
 import { useGetIdentity } from "@pankod/refine-core";
-import { AntdLayout, Typography, Avatar, Space } from "@pankod/refine-antd";
+import {
+  AntdLayout,
+  Typography,
+  Avatar,
+  Space,
+  AutoComplete,
+  Input,
+  Icons,
+} from "@pankod/refine-antd";
+
+const { SearchOutlined } = Icons;
 
 const { Text } = Typography;
 
@@ -20,6 +30,12 @@ export const Header: React.FC = () => {
         backgroundColor: "#FFF",
       }}
     >
+      <AutoComplete
+        style={{ width: "100%", maxWidth: "550px" }}
+        filterOption={false}
+      >
+        <Input size="large" placeholder="Search" suffix={<SearchOutlined />} />
+      </AutoComplete>
       <Space>
         {user.name && (
           <Text ellipsis strong>
