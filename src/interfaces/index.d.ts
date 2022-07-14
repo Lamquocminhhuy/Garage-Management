@@ -20,6 +20,20 @@ export interface IService {
   price: string;
   time: string;
   garage: { id: number };
+  image: [
+    {
+      path: string;
+      filename: string;
+      mimetype: string;
+    }
+  ];
+}
+
+export interface ILocalFile {
+  id: number;
+  filename: string;
+  path: string;
+  mimetype: string;
 }
 
 export interface IReservation {
@@ -28,8 +42,13 @@ export interface IReservation {
   r_time: time;
   user: { id: number };
   service: { id: number };
+  status: { id: number };
 }
 
+export interface IStatus {
+  id: number;
+  status: string;
+}
 export interface IOptionGroup {
   value: string;
   label: string | React.ReactNode;

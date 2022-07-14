@@ -1,4 +1,10 @@
-import { AntdLayout, AutoComplete, Input, Icons } from "@pankod/refine-antd";
+import {
+  AntdLayout,
+  AutoComplete,
+  Input,
+  Icons,
+  Space,
+} from "@pankod/refine-antd";
 
 const { SearchOutlined } = Icons;
 

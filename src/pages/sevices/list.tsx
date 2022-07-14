@@ -5,18 +5,15 @@ import {
   TextField,
   useTable,
   getDefaultSortOrder,
-  DateField,
   Space,
   EditButton,
   DeleteButton,
-  useSelect,
   TagField,
-  FilterDropdown,
-  Select,
   ShowButton,
   MarkdownField,
+  ImageField,
 } from "@pankod/refine-antd";
-import { IService, IGarage } from "interfaces";
+import { IService, IGarage, ILocalFile } from "interfaces";
 
 export const ServiceList: React.FC<IResourceComponentsProps> = () => {
   const { tableProps, sorter } = useTable<IService>({
@@ -27,6 +24,8 @@ export const ServiceList: React.FC<IResourceComponentsProps> = () => {
       },
     ],
   });
+
+  console.log(tableProps.dataSource);
 
   const garageIds = tableProps?.dataSource?.map((item) => item.garage.id) ?? [];
   const { data: garageData, isLoading } = useMany<IGarage>({
@@ -96,6 +95,23 @@ export const ServiceList: React.FC<IResourceComponentsProps> = () => {
           title="Time"
           render={(value) => <TextField value={value + " minutes"} />}
           defaultSortOrder={getDefaultSortOrder("time", sorter)}
+          sorter
+        />
+
+        <Table.Column
+          dataIndex="imageId"
+          key="imageId"
+          title="Image"
+          render={(value) => {
+            return (
+              <ImageField
+                value={`http://localhost:3000/local-files/${value}`}
+                width={200}
+                height={150}
+              />
+            );
+          }}
+          defaultSortOrder={getDefaultSortOrder("price", sorter)}
           sorter
         />
         <Table.Column<IService>

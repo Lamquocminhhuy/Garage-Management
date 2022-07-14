@@ -13,7 +13,7 @@ import {
   TagField,
   EmailField,
 } from "@pankod/refine-antd";
-import { IReservation, IUser } from "interfaces";
+import { IReservation, IStatus, IUser } from "interfaces";
 
 export const ReservationList: React.FC<IResourceComponentsProps> = () => {
   const { tableProps, sorter } = useTable<IReservation>({
@@ -23,6 +23,15 @@ export const ReservationList: React.FC<IResourceComponentsProps> = () => {
         order: "asc",
       },
     ],
+  });
+
+  const statusIds = tableProps?.dataSource?.map((item) => item.status.id) ?? [];
+  const { data: statusData } = useMany<IStatus>({
+    resource: "status",
+    ids: statusIds,
+    queryOptions: {
+      enabled: statusIds.length > 0,
+    },
   });
 
   const userIds = tableProps?.dataSource?.map((item) => item.user.id) ?? [];
@@ -73,6 +82,21 @@ export const ReservationList: React.FC<IResourceComponentsProps> = () => {
             return (
               <EmailField
                 value={userData?.data.find((item) => item.id === value)?.email}
+              />
+            );
+          }}
+        />
+
+        <Table.Column
+          dataIndex={["status", "id"]}
+          title="Booking Status"
+          render={(value) => {
+            return (
+              <TagField
+                value={
+                  statusData?.data.find((item) => item.id === value)?.status
+                }
+                color="blue"
               />
             );
           }}

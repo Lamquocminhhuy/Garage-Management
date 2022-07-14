@@ -11,7 +11,7 @@ import {
 
 import "react-mde/lib/styles/css/react-mde-all.css";
 
-import { IService, IReservation, IUser } from "interfaces";
+import { IService, IReservation, IUser, IStatus } from "interfaces";
 
 export const ReservationCreate: React.FC<IResourceComponentsProps> = () => {
   const { formProps, saveButtonProps } = useForm<IReservation>();
@@ -25,6 +25,13 @@ export const ReservationCreate: React.FC<IResourceComponentsProps> = () => {
     resource: "users",
     optionLabel: "email",
   });
+
+  const { selectProps: statusSelectProps } = useSelect<IStatus>({
+    resource: "status",
+    optionLabel: "status",
+  });
+
+  console.log(statusSelectProps);
 
   return (
     <Create saveButtonProps={saveButtonProps}>
@@ -82,7 +89,7 @@ export const ReservationCreate: React.FC<IResourceComponentsProps> = () => {
 
         <Form.Item
           label="User"
-          name={["users", "id"]}
+          name={["user", "id"]}
           rules={[
             {
               required: true,
@@ -90,6 +97,18 @@ export const ReservationCreate: React.FC<IResourceComponentsProps> = () => {
           ]}
         >
           <Select {...userSelectProps} />
+        </Form.Item>
+
+        <Form.Item
+          label="Status"
+          name={["status", "id"]}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Select {...statusSelectProps} />
         </Form.Item>
       </Form>
     </Create>

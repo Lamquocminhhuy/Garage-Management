@@ -1,4 +1,4 @@
-import { IResourceComponentsProps } from "@pankod/refine-core";
+import { IResourceComponentsProps, useApiUrl } from "@pankod/refine-core";
 import {
   Create,
   Form,
@@ -6,6 +6,9 @@ import {
   Select,
   useSelect,
   useForm,
+  Button,
+  Upload,
+  getValueFromEvent,
 } from "@pankod/refine-antd";
 
 import ReactMarkdown from "react-markdown";
@@ -18,6 +21,8 @@ import { useState } from "react";
 
 export const ServiceCreate: React.FC<IResourceComponentsProps> = () => {
   const [selectedTab, setSelectedTab] = useState<"write" | "preview">("write");
+
+  const apiUrl = useApiUrl();
 
   const { formProps, saveButtonProps } = useForm<IService>();
 
@@ -75,6 +80,26 @@ export const ServiceCreate: React.FC<IResourceComponentsProps> = () => {
           ]}
         >
           <Select {...garageSelectProps} />
+        </Form.Item>
+
+        <Form.Item label="Image">
+          <Form.Item
+            name="image"
+            valuePropName="fileList"
+            getValueFromEvent={getValueFromEvent}
+            noStyle
+          >
+            <Upload.Dragger
+              name="file"
+              action={`${apiUrl}/service`}
+              listType="picture"
+              maxCount={5}
+              multiple
+              accept=".jpg,.jpeg,.png"
+            >
+              <p className="ant-upload-text">Drag & drop a file in this area</p>
+            </Upload.Dragger>
+          </Form.Item>
         </Form.Item>
 
         <Form.Item
